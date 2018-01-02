@@ -16,5 +16,5 @@ function binaryOneCounter(n){
   
 }
 
-binaryOneCounter(5);
+binaryOneCounter(439);
 binaryOneCounter(7);
