@@ -79,6 +79,115 @@
 //  return maxChar;
 //}
 
+// --- Directions
+// Write a program that console logs the numbers
+// from 1 to n. But for multiples of three print
+// “fizz” instead of the number and for the multiples
+// of five print “buzz”. For numbers which are multiples
+// of both three and five print “fizzbuzz”.
+// --- Example
+//   fizzBuzz(5);
+//   1
+//   2
+//   fizz
+//   4
+//   buzz
+//
+//function fizzBuzz(n) {
+//  for (i=1; i<=n; i++){
+//     if (i % 5 === 0 && i % 3 === 0) {
+//       console.log('fizzbuzz');
+//     } else if ( i % 3 === 0 ) {
+//       console.log('fizz')
+//     } else if (i % 5 === 0) {
+//       console.log('buzz')
+//     } else {
+//       console.log(i)
+//     }
+//  }
+//}
+//
+//module.exports = fizzBuzz;
+
+
+// --- Directions
+// Given an array and chunk size, divide the array into many subarrays
+// where each subarray is of length size
+// --- Examples
+// chunk([1, 2, 3, 4], 2) --> [[ 1, 2], [3, 4]]
+// chunk([1, 2, 3, 4, 5], 2) --> [[ 1, 2], [3, 4], [5]]
+// chunk([1, 2, 3, 4, 5, 6, 7, 8], 3) --> [[ 1, 2, 3], [4, 5, 6], [7, 8]]
+// chunk([1, 2, 3, 4, 5], 4) --> [[ 1, 2, 3, 4], [5]]
+// chunk([1, 2, 3, 4, 5], 10) --> [[ 1, 2, 3, 4, 5]]
+
+//function chunk(array, size) {
+//  //make a new array
+//  let chunkedArray = [];
+//  //walk through original array
+//  while (array.length > 0) {
+//    if (array.length > size) {
+//      let chunk = array.splice(0,size)
+//      chunkedArray.push(chunk);
+//    } else {
+//      chunkedArray.push(array);
+//      array = [];
+//    }
+//  }
+//  return chunkedArray;
+//}
+
+//Complexity O(n) - Danger of Infinite Loop
+
+// --- Directions
+// Check to see if two provided strings are anagrams of eachother.
+// One string is an anagram of another if it uses the same characters
+// in the same quantity. Only consider characters, not spaces
+// or punctuation.  Consider capital letters to be the same as lower case
+// --- Examples
+//   anagrams('rail safety', 'fairy tales') --> True
+//   anagrams('RAIL! SAFETY!', 'fairy tales') --> True
+//   anagrams('Hi there', 'Bye there') --> False
+
+//function anagrams(stringA, stringB) {
+//  stringA = stringA.replace(/[^\w]/g, "").toLowerCase();
+//  stringB = stringB.replace(/[^\w]/g, "").toLowerCase();
+//  
+//  if (stringA.length !== stringB.length) {
+//    return false;
+//  }
+//  
+//  let charsA = {}
+//  let charsB = {}
+//  
+//  for (let char of stringA) {
+//    if (!charsA[char]){
+//      charsA[char] = 1
+//    } else {
+//      charsA[char] += 1
+//    }
+//  }
+//  
+//   for (let char of stringB) {
+//    if (!charsB[char]){
+//      charsB[char] = 1
+//    } else {
+//      charsB[char] += 1
+//    }
+//  }
+//  
+//  for (let char in charsA) {
+//    if (charsA[char] !== charsB[char]){
+//      return false;
+//    } else {
+//      return true;
+//    }
+//  }
+//  
+//  
+//}
+//
+//module.exports = anagrams;
+
 
 
 
