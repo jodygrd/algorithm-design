@@ -3,13 +3,13 @@
 // Given a string, return a new string with the reversed
 // order of characters
 
-//function reverse(str) {
-//  let reversed = [];
-//  for (i=0; i < str.length; i++) {
-//    reversed.unshift(str[i])
-//  }
-//  return reversed.join('');
-//}
+function reverse(str) {
+  let reversed = [];
+  for (i=0; i < str.length; i++) {
+    reversed.unshift(str[i])
+  }
+  return reversed.join('');
+}
 
 
 // --- Directions
@@ -21,17 +21,16 @@
 //   palindrome("abba") === true
 //   palindrome("abcdefg") === false
 
-//function palindrome(str) {
-//  for (i=0; i<str.length; i++) {
-//    if (str[i] === str[str.length-1-i]){
-//      return true
-//    } else {
-//      return false
-//    }
-//  }
-//}
-//
-//module.exports = palindrome;
+function palindrome(str) {
+  for (i=0; i<str.length; i++) {
+    if (str[i] === str[str.length-1-i]){
+      return true
+    } else {
+      return false
+    }
+  }
+}
+
 
 
 // --- Directions
@@ -44,15 +43,15 @@
 //   reverseInt(-15) === -51
 //   reverseInt(-90) === -9
 
-//function reverseInt(n) {
-//  const sign = Math.sign(n)
-//  const array = (n*sign).toString().split('');
-//  let reversed = ''
-//  for (let char of array) {
-//    reversed = char + reversed
-//  }
-//  return sign*parseInt(reversed)
-//}
+function reverseInt(n) {
+  const sign = Math.sign(n)
+  const array = (n*sign).toString().split('');
+  let reversed = ''
+  for (let char of array) {
+    reversed = char + reversed
+  }
+  return sign*parseInt(reversed)
+}
 
 // --- Directions
 // Given a string, return the character that is most
@@ -61,24 +60,24 @@
 // maxChar("abcccccccd") === "c"
 // maxChar("apple 1231111") === "1"
 
-//function maxChar(str) {
-//  let chars = {}
-//  let maxTimes = 0
-//  let maxChar = ''
-//  
-//  for (let char of str) {
-//    chars[char] = chars[char] + 1 || 1
-//  };
-//  
-//  for (let char in chars) {
-//    if (chars[char] > maxTimes) {
-//      maxTimes = chars[char];
-//      maxChar = char;
-//    }
-//  }
-//  
-//  return maxChar;
-//}
+function maxChar(str) {
+  let chars = {}
+  let maxTimes = 0
+  let maxChar = ''
+  
+  for (let char of str) {
+    chars[char] = chars[char] + 1 || 1
+  };
+  
+  for (let char in chars) {
+    if (chars[char] > maxTimes) {
+      maxTimes = chars[char];
+      maxChar = char;
+    }
+  }
+  
+  return maxChar;
+}
 
 // --- Directions
 // Write a program that console logs the numbers
@@ -94,19 +93,19 @@
 //   4
 //   buzz
 //
-//function fizzBuzz(n) {
-//  for (i=1; i<=n; i++){
-//     if (i % 5 === 0 && i % 3 === 0) {
-//       console.log('fizzbuzz');
-//     } else if ( i % 3 === 0 ) {
-//       console.log('fizz')
-//     } else if (i % 5 === 0) {
-//       console.log('buzz')
-//     } else {
-//       console.log(i)
-//     }
-//  }
-//}
+function fizzBuzz(n) {
+  for (i=1; i<=n; i++){
+     if (i % 5 === 0 && i % 3 === 0) {
+       console.log('fizzbuzz');
+     } else if ( i % 3 === 0 ) {
+       console.log('fizz')
+     } else if (i % 5 === 0) {
+       console.log('buzz')
+     } else {
+       console.log(i)
+     }
+  }
+}
 //
 
 
@@ -120,21 +119,21 @@
 // chunk([1, 2, 3, 4, 5], 4) --> [[ 1, 2, 3, 4], [5]]
 // chunk([1, 2, 3, 4, 5], 10) --> [[ 1, 2, 3, 4, 5]]
 
-//function chunk(array, size) {
-//  //make a new array
-//  let chunkedArray = [];
-//  //walk through original array
-//  while (array.length > 0) {
-//    if (array.length > size) {
-//      let chunk = array.splice(0,size)
-//      chunkedArray.push(chunk);
-//    } else {
-//      chunkedArray.push(array);
-//      array = [];
-//    }
-//  }
-//  return chunkedArray;
-//}
+function chunk(array, size) {
+  //make a new array
+  let chunkedArray = [];
+  //walk through original array
+  while (array.length > 0) {
+    if (array.length > size) {
+      let chunk = array.splice(0,size)
+      chunkedArray.push(chunk);
+    } else {
+      chunkedArray.push(array);
+      array = [];
+    }
+  }
+  return chunkedArray;
+}
 
 //Complexity O(n) - Danger of Infinite Loop
 
@@ -148,42 +147,42 @@
 //   anagrams('RAIL! SAFETY!', 'fairy tales') --> True
 //   anagrams('Hi there', 'Bye there') --> False
 
-//function anagrams(stringA, stringB) {
-//  stringA = stringA.replace(/[^\w]/g, "").toLowerCase();
-//  stringB = stringB.replace(/[^\w]/g, "").toLowerCase();
-//  
-//  if (stringA.length !== stringB.length) {
-//    return false;
-//  }
-//  
-//  let charsA = {}
-//  let charsB = {}
-//  
-//  for (let char of stringA) {
-//    if (!charsA[char]){
-//      charsA[char] = 1
-//    } else {
-//      charsA[char] += 1
-//    }
-//  }
-//  
-//   for (let char of stringB) {
-//    if (!charsB[char]){
-//      charsB[char] = 1
-//    } else {
-//      charsB[char] += 1
-//    }
-//  }
-//  
-//  for (let char in charsA) {
-//    if (charsA[char] !== charsB[char]){
-//      return false;
-//    } else {
-//      return true;
-//    }
-//  }
-//}
-//
+function anagrams(stringA, stringB) {
+  stringA = stringA.replace(/[^\w]/g, "").toLowerCase();
+  stringB = stringB.replace(/[^\w]/g, "").toLowerCase();
+  
+  if (stringA.length !== stringB.length) {
+    return false;
+  }
+  
+  let charsA = {}
+  let charsB = {}
+  
+  for (let char of stringA) {
+    if (!charsA[char]){
+      charsA[char] = 1
+    } else {
+      charsA[char] += 1
+    }
+  }
+  
+   for (let char of stringB) {
+    if (!charsB[char]){
+      charsB[char] = 1
+    } else {
+      charsB[char] += 1
+    }
+  }
+  
+  for (let char in charsA) {
+    if (charsA[char] !== charsB[char]){
+      return false;
+    } else {
+      return true;
+    }
+  }
+}
+
 
 // --- Directions
 // Write a function that accepts a string.  The function should
@@ -194,14 +193,14 @@
 //   capitalize('a lazy fox') --> 'A Lazy Fox'
 //   capitalize('look, it is working!') --> 'Look, It Is Working!'
 //
-//function capitalize(str) {
-//  let array = str.split(' ');
-//  let newArray = []
-//  for (let word of array) {
-//    newArray.push(word[0].toUpperCase() + word.slice(1));
-//  }
-//  return newArray.join(' ');
-//}
+function capitalize(str) {
+  let array = str.split(' ');
+  let newArray = []
+  for (let word of array) {
+    newArray.push(word[0].toUpperCase() + word.slice(1));
+  }
+  return newArray.join(' ');
+}
 
 // --- Directions
 // Write a function that accepts a positive number N.
@@ -241,31 +240,31 @@
 //    console.log(string)
 //  }
 //  
-//}
+}
 
 //Stephen's Recursive Solution
 
-//function steps(n, row = 0, stair = '') {
-//  if (row === n) {
-//    return;
-//  }
-//    
-//  if (n === stair.length) {
-//    console.log(stair);
-//    steps(n, row + 1);
-//    return
-//  }
-//  
-//  if (stair.length <= row) {
-//    stair += '#';
-//  } else {
-//    stair += ' '
-//  }
-//  
-//  steps(n, row, stair);
-//}
-//
-//module.exports = steps;
+function steps(n, row = 0, stair = '') {
+  if (row === n) {
+    return;
+  }
+    
+  if (n === stair.length) {
+    console.log(stair);
+    steps(n, row + 1);
+    return
+  }
+  
+  if (stair.length <= row) {
+    stair += '#';
+  } else {
+    stair += ' '
+  }
+  
+  steps(n, row, stair);
+}
+
+module.exports = steps;
 
 
 // --- Directions
@@ -285,26 +284,25 @@
 //       '#####'
 
 //iterative solution
-//function pyramid(n) {
-//  const width = n * 2 - 1;
-//  const midpoint = Math.floor(width / 2)
-//  
-//  for (let row = 0; row < n; row++){
-//    let level = ''
-//    for ( let col = 0; col < width;  col++){
-//      if (midpoint - row <= col && midpoint + row >= col) {
-//        level += '#';
-//      } else {
-//        level += ' ';
-//      }      
-//    }
-//    
-//    console.log(level)
-//  }
-//
-//}
-//
-//module.exports = pyramid;
+function pyramid(n) {
+  const width = n * 2 - 1;
+  const midpoint = Math.floor(width / 2)
+  
+  for (let row = 0; row < n; row++){
+    let level = ''
+    for ( let col = 0; col < width;  col++){
+      if (midpoint - row <= col && midpoint + row >= col) {
+        level += '#';
+      } else {
+        level += ' ';
+      }      
+    }
+    
+    console.log(level)
+  }
+
+}
+
 
 
 // --- Directions
@@ -316,10 +314,24 @@
 //   vowels('Why do you ask?') --> 4
 //   vowels('Why?') --> 0
 
-////regexp solution
+////REGEXP SOLUTION - O(n)
+function vowels(str) {
+  let noVowels = str.toLowerCase().replace(/[aeiou]/g, '');
+  
+  return str.length - noVowels.length;
+}
+
+// iterative solution - (O(n**2) - NOT ideal)
+
 //function vowels(str) {
-//  let noVowels = str.toLowerCase().replace(/[aeiou]/g, '');
-//  
-//  return str.length - noVowels.length;
+//  const vowelArray = ['a','e','i','o','u'];
+//  let total = 0
+//  for (let char of str.toLowerCase()) {
+//    if (vowelArray.includes(char)){
+//      total++
+//    }
+//  }
+//  return total;
 //}
+//
 
