@@ -307,5 +307,19 @@
 //module.exports = pyramid;
 
 
+// --- Directions
+// Write a function that returns the number of vowels
+// used in a string.  Vowels are the characters 'a', 'e'
+// 'i', 'o', and 'u'.
+// --- Examples
+//   vowels('Hi There!') --> 3
+//   vowels('Why do you ask?') --> 4
+//   vowels('Why?') --> 0
 
+////regexp solution
+//function vowels(str) {
+//  let noVowels = str.toLowerCase().replace(/[aeiou]/g, '');
+//  
+//  return str.length - noVowels.length;
+//}
 
