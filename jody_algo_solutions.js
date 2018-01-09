@@ -398,3 +398,40 @@ function matrix(n) {
 }
 
 
+// --- Directions
+// Print out the n-th entry in the fibonacci series.
+// The fibonacci series is an ordering of numbers where
+// each number is the sum of the preceeding two.
+// For example, the sequence
+//  [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
+// forms the first ten entries of the fibonacci series.
+// Example:
+//   fib(4) === 3
+
+//iterative solution - constant runtime - O(n)
+//
+//function fib(n) {
+//  let previous = 0
+//  let next = 1
+//
+//  for (let i = 1; i < n ; i++ ) {
+//    next = previous + next
+//    previous = next - previous
+//  }
+//  
+//  return next
+//}
+
+//another iterative solution - constant runtime - O(n)
+//function fib(n) {
+//  let array = [0, 1]
+//  for (let i = 2; i <= n; i++) {
+//    array[i] = array[i-1] + array[i-2]  
+//  }
+//  return array[array.length-1]
+// 
+//}
+//
+//module.exports = fib;
+//
+
