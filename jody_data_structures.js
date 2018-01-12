@@ -260,9 +260,46 @@ class LinkedList {
     
   }
     
-
-  }
+  
+  removeAt(index) {
+    if (!this.head){
+      return
+    }
     
+    if (!this.head.next){
+      this.head = null;
+      return
+    }
+    
+    if (index === 0) {
+      this.head = this.head.next
+      return
+    }
+
+    let previousNode = this.getAt(index-1)
+    previousNode.next = this.getAt(index+1)
+    
+  }
+  
+  insertAt(data, index) {
+    if (!this.head || !this.head.next || !this.getAt(index)) {
+      this.insertLast(data);
+      return;
+    }
+    
+    if (index === 0) {
+      this.head = new Node(data, this.head);
+      return;
+    }
+    
+    let previousNode = this.getAt(index-1);
+    let nextNode = this.getAt(index);
+    previousNode.next = new Node(data, nextNode);
+    
+  }
   
   
 }
+    
+  
+  
