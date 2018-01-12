@@ -103,3 +103,122 @@ class Stack {
 }
 
 module.exports = Stack;
+
+// --- Directions
+// Implement a Queue datastructure using two stacks.
+// *Do not* create an array inside of the 'Queue' class.
+// Queue should implement the methods 'add', 'remove', and 'peek'.
+// For a reminder on what each method does, look back
+// at the Queue exercise.
+// --- Examples
+//     const q = new Queue();
+//     q.add(1);
+//     q.add(2);
+//     q.peek();  // returns 1
+//     q.remove(); // returns 1
+//     q.remove(); // returns 2
+
+const Stack = require('./stack');
+
+class Queue {
+  constructor() {  
+    this.s1 = new Stack();
+    this.s2 = new Stack();
+  }
+  
+
+  swap(stack1, stack2) {
+    while (stack1.peek()) {
+      stack2.push(stack1.pop());
+    }
+  }
+  
+  add(record){
+      this.s1.push(record)
+  }
+
+  remove(){
+      this.swap(this.s1,this.s2);
+      const record = this.s2.pop();
+      this.swap(this.s2,this.s1);
+      return record;
+  }
+  
+  peek() {
+    this.swap(this.s1,this.s2);
+    const record = this.s2.peek();
+    this.swap(this.s2,this.s1);
+    return record; 
+  }
+  
+}
+
+// --- Directions
+// Implement classes Node and Linked Lists
+
+class Node {
+  
+  constructor(data, next = null){
+    this.data = data;
+    this.next = next;
+  }
+  
+}
+
+class LinkedList {
+  constructor(){
+    this.head = null;
+  }
+  
+  insertFirst(data) {
+    this.head = new Node(data, this.head);
+  }
+  
+  size(){
+    let counter = 0
+    let currentNode = this.head;
+    
+    while (currentNode) {
+      counter++;
+      currentNode = currentNode.next;
+    }
+    
+    return counter;
+  }
+  
+  getFirst(){
+    return this.head;
+    
+  }
+  
+  getLast(){
+    
+    let currentNode = this.head;
+    
+    while (currentNode) {
+      if (!currentNode.next) {
+        return currentNode
+      }
+      currentNode = currentNode.next
+    }
+    
+  }
+  
+  clear() {
+    
+    let node = this.head;
+    while (node) {
+      this.head = null;
+      node = node.next;
+    }
+  }
+  
+  removeFirst() {
+    this.head = this.head.next;
+  }
+  
+  removeLast() {
+    
+  }
+  
+}
