@@ -218,7 +218,51 @@ class LinkedList {
   }
   
   removeLast() {
+    if (!this.head) {
+      return
+    }
+    
+    if (!this.head.next) {
+      this.head = null;
+      return;
+    }
+    
+    let node = this.head
+    while (node) {
+      if (!node.next.next){
+        node.next = null
+        return;
+      } else {
+        node = node.next
+      }
+    }
+  }
+  
+  insertLast(data) {
     
   }
+      
+
+  getAt(index){
+
+    let counter = 0;
+    let node = this.head;
+    while (node) {
+      if (counter === index) {
+        return node;
+      } 
+      
+      counter++;
+      node = node.next;
+    }
+    
+    return null;
+    
+  }
+    
+
+  }
+    
+  
   
 }
