@@ -392,7 +392,29 @@ function circular(list) {
   
 }
 
-module.exports = circular;
+// --- Directions
+// Given a linked list, return the element n spaces
+// from the last node in the list.  Do not call the 'size'
+// method of the linked list.  Assume that n will always
+// be less than the length of the list.
+// --- Examples
+//    const list = new List();
+//    list.insertLast('a');
+//    list.insertLast('b');
+//    list.insertLast('c');
+//    list.insertLast('d');
+//    fromLast(list, 2).data // 'b'
 
+function fromLast(list, n) {
+  let forwardNode = list.getAt(n);
+  let backNode = list.head;
+  
+  while (forwardNode.next) {
+    backNode = backNode.next;
+    forwardNode = forwardNode.next
+  }
+  
+  return backNode;
   
   
+}
