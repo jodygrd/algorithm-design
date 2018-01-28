@@ -457,5 +457,24 @@ class Tree {
     this.root = null;
   }
   
+
+  traverseBF(fn) {
+    
+    let queue = []
+    
+    queue.push(this.root);
+    
+    while (queue.length > 0) {
+      //pop off first node
+      let node = queue.shift();
+      //move children to end of stack
+      node.children.forEach(child => queue.push(child))
+      //run function on current node
+      fn(node);
+      
+    }
+    
+    
+  }
   
 }
