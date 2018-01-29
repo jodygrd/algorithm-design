@@ -476,5 +476,19 @@ class Tree {
     
     
   }
+
+  traverseDF(fn) {
+    
+    let array = [this.root];
+    
+    while (array.length) {
+      let node = array.shift();
+      array.unshift(...node.children)
+      fn(node);
+    
+    }
+    
+  }
+  
   
 }
