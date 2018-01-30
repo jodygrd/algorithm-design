@@ -513,13 +513,16 @@ function levelWidth(root) {
   let queue = [root, 'STOP']
 
   while (queue.length > 1) {
-    if (queue[0] === 'STOP') {
-      counters.push(0);
-      queue.push(queue.shift());
-    }
+    
     let node = queue.shift();
-    queue.push(...node.children)
-    counters[counters.length-1]++
+
+    if (node === 'STOP') {
+      counters.push(0);
+      queue.push('STOP');
+    } else {
+      queue.push(...node.children)
+      counters[counters.length-1]++
+    }
     
   }
   
@@ -527,4 +530,61 @@ function levelWidth(root) {
   
 }
 
-module.exports = levelWidth;
+
+// --- Directions
+// 1) Implement the Node class to create
+// a binary search tree.  The constructor
+// should initialize values 'data', 'left',
+// and 'right'.
+// 2) Implement the 'insert' method for the
+// Node class.  Insert should accept an argument
+// 'data', then create an insert a new node
+// at the appropriate location in the tree.
+// 3) Implement the 'contains' method for the Node
+// class.  Contains should accept a 'data' argument
+// and return the Node in the tree with the same value.
+
+class Node {
+  constructor(data){
+    this.data = data;
+    this.left = null;
+    this.right = null;
+  }
+  
+  insert(data){
+    
+    if (!this.left && (data < this.data) ) {
+      this.left = new Node(data);
+      return;
+    }
+    
+    if (!this.right && (data > this.data)) {
+      this.right = new Node(data);
+      return;
+    }
+    
+    if ( data < this.data ) {
+      return this.left.insert(data);
+    } else if (data > this.data ) {
+      return this.right.insert(data);
+    }
+  }
+  
+  
+  contains(data) {
+    if (this.data === data) {
+      return this;
+    } 
+    
+    if (this.left && (data < this.data)) {
+      return this.left.contains(data);
+    } 
+    
+    if (this.right && (data > this.data)){
+      return this.right.contains(data)
+    }
+    
+    return null;
+    
+  }
+}
