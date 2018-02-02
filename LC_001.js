@@ -1,17 +1,41 @@
-var twoSum = function(nums, target) {
-    var indexes = []
-    for (i=0; i<nums.length-1; i++) {
-      for (j=1; j<nums.length; j++) {
-         if (nums[i]+nums[j] === target){
-            return [i,j]
-          }
-      }
-    }
-};
+//Stock Prices
 
-twoSum([2, 7, 11, 15], 9)
+//Write an efficient function that takes stockPricesYesterday and returns the best profit I could have made from 1 purchase and 1 sale of 1 Apple stock yesterday.
 
-twoSum([3,2,4], 6)
+//For example:
+
+// var stockPricesYesterday = [10, 7, 5, 8, 11, 9];
+
+// getMaxProfit(stockPricesYesterday);
+// // returns 6 (buying for $5 and selling for $11)
 
 
-// Brute force approach has time complexity of O(n). Try hash-map next time!
+
+
+function getMaxProfit(stockPricesYesterday){
+	let minSoFar = stockPricesYesterday[0];
+	let maxDifference = stockPricesYesterday[1] - minSoFar;
+
+	for (let i=1; i < stockPricesYesterday.length; i++) {
+		let currentDifference = stockPricesYesterday[i] - minSoFar;
+		if (currentDifference > maxDifference) {
+			maxDifference = currentDifference;
+		}
+		if (stockPricesYesterday[i] < minSoFar) {
+			minSoFar = stockPricesYesterday[i];
+		}
+	}
+
+	return maxDifference;
+
+}
+
+var stockPricesYesterday = [10, 7, 5, 8, 11, 9];
+console.log(getMaxProfit(stockPricesYesterday));
+
+var stockPricesYesterday = [10, 7, 5, 8, 19, -2];
+console.log(getMaxProfit(stockPricesYesterday));
+
+var stockPricesYesterday = [10,9,8,7,6];
+console.log(getMaxProfit(stockPricesYesterday));
+
