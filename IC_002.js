@@ -27,7 +27,6 @@ function getProductsOfAllIntsExceptAtIndex(array) {
 	currentProd = 1
 	for (let j = array.length-1; j >= 0; j--) {
 		finalArray[j] *= currentProd;
-		currentProd *= array[j]
 	}
 
 
