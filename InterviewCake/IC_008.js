@@ -33,10 +33,10 @@ class Node {
 
 }
 
-/
+
 // function traverseDF(fn, rootNode){
 // 	const nodeQueue = [rootNode]
-// 	while (nodeQueue.length) { //INFINITE LOOP. Null Nodes will keep length going and try to run through function, fucking it all the hell up RIP. 
+// 	while (nodeQueue.length) { //this might work I really have no idea
 // 		let currentNode = nodeQueue.shift();
 // 		nodeQueue.unshift(currentNode.left, currentNode.right); 
 // 		fn(currentNode); 
@@ -62,7 +62,7 @@ function isBalanced(rootNode){
 		let depth = nodePair[1];
 
 
-		//case - a leaf exists 
+		//case - our node is a 'leaf' - it is hanging on the end and it does not have any nodes below it, to the left or to the right. We measure ITS depth, which we know because OUTSIDE of this 
 		if (!node.left && !node.right) {
 			
 			//check if it's a new depth
@@ -75,7 +75,10 @@ function isBalanced(rootNode){
 					return false
 				}
 
-			} else {
+			}
+
+		} else {
+				//NOT A LEAF, keep walking through tree amiga. 
 				//insert next pairs into tree
 				if (node.left) {
 					nodes.push([node.left, depth +1 ])
@@ -83,7 +86,6 @@ function isBalanced(rootNode){
 				if (node.right) {
 					node.push([node.right, depth +1])
 				}
-			}
 
 		}
 
