@@ -1,72 +1,94 @@
-//Make a temperature tracker class;
+//is a BST "superbalanced?"
 
-class TempTracker(){
-	constructor(){
-		//for min/max
-		this.minTemp = null;
-		this.maxTemp = null;
+//"The difference between the min leaf depth and the max leaf depth is 1 or less"
+//"There are at most two distinct leaf depths, and they are at most 1 apart"
 
-		//for mean
-		this.numberOfTemps = 0;
-		this.totalTemp = 0 
 
-		//for mode
-		//initialize an array of zeroes to the max number - i don't like this method
-		this.modeCounter = []
-		for (i = 0; i < 111; i++) {
-			this.modeCounter[i] = 0
-		}
+//idea:
+//find the depth of the left node and find the depth of the right node? 
 
-		this.maxOccurrences = 0;
-		this.mode = null;
+class Node {
+	constructor(data) {
+		this.data = data;
+		this.left = null;
+		this.right = null;
 	}
 
-	insert(temp){
-
-		//for min/max
-		if (this.minTemp === null || temp < this.minTemp ){
-			this.minTemp = temp;
-		}
-		if (this.maxTemp === null || temp > this.maxTemp) {
-			this.maxTemp = temp;
-		}
-		
-		//for mean
-		this.numberOfTemps++
-		this.totalTemp += temp;
-
-		if (!this.modeCounter[temp]) {
-			this.modeCounter[temp] = 1
-		} else {
-			this.modeCounter[temp]++
+	insert(data) {
+		if (data < this.data && !this.left) {
+			this.left = new Node(data);
+			return;
+		} else if (data < this.data) {
+			return this.left.insert(data);
 		}
 
-		//for mode 
-		this.modeCounter[temp]++;
-		if (this.modeCounter[temp] > this.maxOccurrences) {
-			this.maxOccurrences = this.modeCounter[temp];
-			this.mode = temp;
+		if (data > this.data && !this.right) {
+			this.right = new Node(data);
+			return;
+		} else if (data > this.data) {
+			return this.right.insert(data);
 		}
 
 	}
 
-	getMax(){
-		return this.minTemp;
+}
+
+/
+// function traverseDF(fn, rootNode){
+// 	const nodeQueue = [rootNode]
+// 	while (nodeQueue.length) { //INFINITE LOOP. Null Nodes will keep length going and try to run through function, fucking it all the hell up RIP. 
+// 		let currentNode = nodeQueue.shift();
+// 		nodeQueue.unshift(currentNode.left, currentNode.right); 
+// 		fn(currentNode); 
+// 	}
+}
+
+function isBalanced(rootNode){
+	if (!rootNode) {
+		return true;
 	}
 
-	getMin() {
-		return this.minTemp;
+	const depths = [];
+
+	//this will be a stack of pairs - node + depth WOW
+	const nodes = [[treeRoot,0]];
+
+
+	while (nodes.length) {
+
+		//remove node from stack
+		let nodePair = nodes.pop();
+		let node = nodePair[0];
+		let depth = nodePair[1];
+
+
+		//case - a leaf exists 
+		if (!node.left && !node.right) {
+			
+			//check if it's a new depth
+			if (depths.indexOf(depth) < 0) {
+				depths.push(depth);
+				//tree is unbalanced if:
+				//more than 2 depths!
+				//2 depths have difference > 2
+				if ((depths.length > 2) || (depths.length === 2 && Math.abs(depths[0] - depths[1])>1)){
+					return false
+				}
+
+			} else {
+				//insert next pairs into tree
+				if (node.left) {
+					nodes.push([node.left, depth +1 ])
+				}
+				if (node.right) {
+					node.push([node.right, depth +1])
+				}
+			}
+
+		}
+
+		return true;
 	}
-
-	getMean() {
-		return this.totalTemp/this.numberOfTemps;
-	}
-
-	getMode() {
-		return this.mode;
-	}
-
-
 
 
 
@@ -75,4 +97,21 @@ class TempTracker(){
 
 
 
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
